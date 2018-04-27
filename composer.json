@@ -1,0 +1,18 @@
+{
+	"name": "bbear/stools",
+	"description": "",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{"name": "BBear", "email": "hululidexiong@163.com"}
+	],
+	"require": {
+		"php": ">=7",
+		"ext-pdo": "*"
+	},
+	"autoload": {
+		"psr-4":{
+			"BBear\\STools\\":"src"
+		}
+	}
+}
