@@ -6,7 +6,7 @@
  * Time: 10:48
  */
 
-namespace ATSoft\Tools\Base;
+namespace BBear\STools\Base;
 
 
 /**
