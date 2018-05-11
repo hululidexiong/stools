@@ -7,7 +7,8 @@
  */
 
 namespace BBear\STools\Base;
-
+use BBear\Tools\Base\Tools;
+use MedMy\DbMy as MDB;
 
 /**
  * Class STools
