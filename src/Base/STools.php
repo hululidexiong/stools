@@ -37,7 +37,7 @@ class STools
     }
 
     private function initV(){
-        $this->dbPre = ['_'];
+        $this->dbPre = [0];
         $this->dbTable = [''];
         $this->dbColumns = ['*'];
         $this->dbWhere = [[]];
@@ -65,7 +65,7 @@ class STools
      * @throws \Exception
      */
     static  function Obj($dbPre = null){
-
+        $dbPre = $dbPre ?? 0;
         $obj = self::getInstance();
         if(is_array($dbPre)){
             if(!Tools::is_indexArray( $dbPre )) throw new \Exception( 'STools where throw : $dbPre must is indexed array!');
