@@ -133,7 +133,7 @@ class STools
             echo MDb::e( $this->dbPre[0] )->last_query() . PHP_EOL;
         }
 
-        $page = Tools::page($count , $page ,$pagesize);
+        $page = Tools::page( $page , $count ,$pagesize);
         $this->dbWhere[0]['LIMIT'] = $page['limit'];
 
         if( empty( $this->dbJoin ) ){
@@ -161,7 +161,7 @@ class STools
         foreach( $this->dbTable as $k => $v ){
             $count[$k] = MDb::e( $this->_IfNullFirstVal('dbPre' , $k) )->count($this->dbTable[$k] , $this->_IfNullFirstVal('dbWhere' , $k));
         }
-        $multiPage = Tools::multiPage($count , $page ,$pagesize);
+        $multiPage = Tools::multiPage( $page , $count , $pagesize);
         $rData = [];
         foreach( $this->dbTable as $k => $v ){
             if($multiPage['limit'][$k]){
