@@ -130,21 +130,21 @@ class STools
         $count = MDb::e( $this->dbPre[0] )->count($this->dbTable[0] , $this->dbWhere[0]);
 
         if($debug){
-            echo MDb::e( $this->dbPre[0] )->last_query() . PHP_EOL;
+            echo MDb::e( $this->dbPre[0] )->log() . PHP_EOL;
         }
 
         $page = Tools::page( $page , $count ,$pagesize);
         $this->dbWhere[0]['LIMIT'] = $page['limit'];
 
         if( empty( $this->dbJoin ) ){
-            $data = MDb::e( $this->dbPre[0] )->select( $this->dbTable[0] , $this->dbWhere[0] ,$this->dbColumns[0] );
+            $data = MDb::e( $this->dbPre[0] )->select( $this->dbTable[0] ,$this->dbColumns[0] , $this->dbWhere[0] );
         }else{
             $data = MDb::e( $this->dbPre[0] )->select( $this->dbTable[0] , $this->dbJoin[0] ,$this->dbColumns[0] ,$this->dbWhere[0] );
         }
 
 
         if($debug){
-            echo MDb::e( $this->dbPre[0] )->last_query() . PHP_EOL;
+            echo MDb::e( $this->dbPre[0] )->log() . PHP_EOL;
         }
 
         return [
@@ -167,7 +167,7 @@ class STools
             if($multiPage['limit'][$k]){
                 $where = $this->_IfNullFirstVal('dbWhere' , $k);
                 $where['LIMIT'] = $multiPage['limit'][$k];
-                $data =  MDb::e( $this->_IfNullFirstVal('dbPre' , $k) )->select( $this->dbTable[$k] , $where  , $this->_IfNullFirstVal('dbColumns' , $k) );
+                $data =  MDb::e( $this->_IfNullFirstVal('dbPre' , $k) )->select( $this->dbTable[$k]  , $this->_IfNullFirstVal('dbColumns' , $k)  , $where );
                 $rData = array_merge( $rData , $data);
             }
         }
